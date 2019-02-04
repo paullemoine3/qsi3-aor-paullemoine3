@@ -110,14 +110,16 @@ let string_of_score: score => string =
     | Points(pointData) =>
       "Player 1: "
       ++ string_of_point(pointData.playerOne)
-      ++ "Player 2: "
+      ++ "-"
       ++ string_of_point(pointData.playerTwo)
+      ++ " : Player 2"
     | Forty(fortyData) =>
       string_of_player(fortyData.player)
       ++ ":40"
-      ++ "Joueur 2: "
+      ++ "-"
       ++ string_of_point(fortyData.otherPlayerPoint)
-    | Deuce => "Player 1:40" ++ "Player 2:40"
-    | Advantage(player) => string_of_player(player)
-    | Game(player) => string_of_player(player)
+      ++ ": Player 2"
+    | Deuce => "Player 1 : 40" ++ "-" ++ "40 : Player 2"
+    | Advantage(player) => "Advantage for : " ++ string_of_player(player)
+    | Game(player) => "Game for : " ++ string_of_player(player)
     };
