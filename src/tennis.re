@@ -114,11 +114,12 @@ let string_of_score: score => string =
       ++ string_of_point(pointData.playerTwo)
       ++ " : Player 2"
     | Forty(fortyData) =>
-      string_of_player(fortyData.player)
-      ++ ":40"
-      ++ "-"
-      ++ string_of_point(fortyData.otherPlayerPoint)
-      ++ ": Player 2"
+      switch (fortyData.player) {
+      | PlayerOne =>
+        "40" ++ " - " ++ string_of_point(fortyData.otherPlayerPoint)
+      | PlayerTwo =>
+        string_of_point(fortyData.otherPlayerPoint) ++ " - " ++ "40"
+      }
     | Deuce => "Player 1 : 40" ++ "-" ++ "40 : Player 2"
     | Advantage(player) => "Advantage for : " ++ string_of_player(player)
     | Game(player) => "Game for : " ++ string_of_player(player)
